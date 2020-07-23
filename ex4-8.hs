@@ -59,3 +59,14 @@ mult :: Int -> Int -> Int -> Int
 -- mult x y z = x*y*z
 
 mult = \x -> (\y -> (\z -> x * y * z))
+
+-- 8 
+
+luhnDouble :: Int -> Int 
+luhnDouble x | x > 4 = 2*x -9
+             | otherwise = 2*x
+
+luhn :: Int -> Int -> Int -> Int -> Bool
+luhn a b c d | ((luhnDouble b) + (luhnDouble c) + (luhnDouble d)) `mod` 10 == 0 = True
+             | otherwise =  False
+
