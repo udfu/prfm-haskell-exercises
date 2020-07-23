@@ -9,7 +9,7 @@ third3 :: [a] -> a
 -- with head & tail
 third1 xs | length xs >= 3 = head (tail (tail xs)) 
 -- with list indexing !!
-third2 xs | length xs >= 3 = xs !! 2
+third2 xs | length xs >= 3 = xs Prelude.!! 2
 -- with pattern matching
 third3 (_:_:x:xs) = x
 
@@ -27,3 +27,21 @@ safetail3 [] = []
 safetail3 xs = tail xs
 
 -- 4 show how disjunction (!!) could be defined in 4 similiar ways with pattern matching
+-- (!!) :: Bool -> Bool -> Bool
+-- True !! True = True
+-- True !! False = True
+-- False !! True = True
+-- False !! False = False
+
+-- 5 
+-- hint: use two nested conditional expression
+
+-- Example with pattern matching
+-- True && True = True
+-- _ && _ = False
+
+-- Solution with conditional expresion
+(&&) :: Bool -> Bool -> Bool
+b1 && b2 = if b1 then 
+                 if b2 then True else False
+           else False
