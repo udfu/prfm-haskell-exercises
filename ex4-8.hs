@@ -42,6 +42,20 @@ safetail3 xs = tail xs
 
 -- Solution with conditional expresion
 (&&) :: Bool -> Bool -> Bool
-b1 && b2 = if b1 then 
-                 if b2 then True else False
-           else False
+-- b1 && b2 = if b1 then 
+--                  if b2 then True else False
+--            else False
+
+-- 6
+-- Example 
+-- True && b = b
+-- False && _ = False
+
+b1 && b = if b1 then b else False
+
+-- 7 - show how the meaning of this curried function can be formalised using lambda expressions
+-- curried function
+mult :: Int -> Int -> Int -> Int 
+-- mult x y z = x*y*z
+
+mult = \x -> (\y -> (\z -> x * y * z))
