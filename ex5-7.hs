@@ -25,3 +25,20 @@ factors n = [x | x <- [1..n], n `mod` x == 0]
 perfects :: Int -> [Int]
 perfects n = [x | x <- [1..n], sum (take ((length (factors x)) - 1) (factors x)) == x]
 
+-- 7
+-- [(x,y) | x <- [1,2], y <- [3,4]]
+
+
+-- 8
+find :: Eq a => a -> [(a,b)] -> [b]
+find k t = [v | (k',v) <- t, k == k']
+
+positions :: Eq a => a -> [a] -> [Int]
+positions x xs = [y | y <- find x (zip xs [1..])]
+
+--9 
+scalarproduct :: [Int] -> [Int] -> Int
+scalarproduct xs ys = sum [x*y | (x,y) <- zip xs ys]
+
+    
+
