@@ -56,3 +56,22 @@ init [1,2,3]
 [1,2]
 -}
 
+-- 6
+and :: [Bool] -> Bool
+and [] = True
+and [b] = b
+and (b:bs) | b = Main.and bs
+         | otherwise = False
+
+-- concatEx [[]] = []
+-- concatEx [x:xs] = x ++ concatEx xs
+
+replicateEx :: Int -> a -> [a]
+replicateEx 0 x = []
+replicateEx n x = x : replicateEx (n-1) x
+
+(!!) :: [a] -> Int -> a
+(x:xs) !! 0 = x
+(x:xs) !! n = xs Main.!! (n-1)
+
+-- elem :: Eq => a -> [a] -> Bool
