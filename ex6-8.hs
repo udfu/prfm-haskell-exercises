@@ -74,4 +74,26 @@ replicateEx n x = x : replicateEx (n-1) x
 (x:xs) !! 0 = x
 (x:xs) !! n = xs Main.!! (n-1)
 
--- elem :: Eq => a -> [a] -> Bool
+elem :: Eq a  => a -> [a] -> Bool
+elem _ [] = False
+elem y (x:xs) | y == x = True
+              | otherwise = Main.elem y xs
+
+-- 7
+-- not use insert or isort!
+-- insert :: Ord a => a -> [a] -> [a]
+-- insert x []     = [x]
+-- insert x (y:ys) | x <= y = x : y :ys
+--                 | otherwise = y : insert x ys
+
+-- isort :: Ord a => [a] -> [a]
+-- isort [] = []
+-- isort (x:xs) = insert x (isort xs)
+
+merge :: Ord a => [a] -> [a] -> [a]
+merge [] xs = xs
+merge xs [] = xs
+merge (x:xs) (y:ys) | x <= y = x : y : merge xs ys
+                    | otherwise = y : x : merge xs ys
+
+-- 8
