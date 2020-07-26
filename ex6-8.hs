@@ -107,3 +107,27 @@ msort [] = []
 msort [x] = [x]
 msort xs = merge (msort (take (length xs `div` 2) xs)) (msort (drop (length xs `div` 2) xs))
 
+-- 9 
+{-
+1. define the type
+2. enumerate the cases
+3. define the simple cases
+4. define the other cases
+5. generalise and simlplify
+-}
+
+sumRec :: [Int] -> Int
+sumRec [] = 0
+sumRec [n] = n
+sumRec (n:ns) = n + sumRec ns
+
+takeRec :: Int -> [a] -> [a]
+takeRec 0 xs = []
+takeRec _ [] = []
+takeRec n (x:xs) = x : takeRec (n-1) xs
+
+lastRec :: [a] -> a
+lastRec [] = error "the list should not be empty"
+lastRec [x] = x
+lastRec (x:xs) = lastRec xs
+
