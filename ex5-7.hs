@@ -40,5 +40,5 @@ positions x xs = [y | y <- find x (zip xs [1..])]
 scalarproduct :: [Int] -> [Int] -> Int
 scalarproduct xs ys = sum [x*y | (x,y) <- zip xs ys]
 
-    
+
 

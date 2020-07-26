@@ -89,11 +89,21 @@ elem y (x:xs) | y == x = True
 -- isort :: Ord a => [a] -> [a]
 -- isort [] = []
 -- isort (x:xs) = insert x (isort xs)
-
+-- not working
 merge :: Ord a => [a] -> [a] -> [a]
 merge [] xs = xs
 merge xs [] = xs
 merge (x:xs) (y:ys) | x <= y = x : y : merge xs ys
                     | otherwise = y : x : merge xs ys
+                    
 
 -- 8
+-- not working
+halve :: [a] -> ([a],[a])
+halve xs = (take (length xs `div` 2) xs , drop (length xs `div` 2) xs)
+
+msort :: Ord a => [a] -> [a]
+msort [] = []
+msort [x] = [x]
+msort xs = merge (msort (take (length xs `div` 2) xs)) (msort (drop (length xs `div` 2) xs))
+
