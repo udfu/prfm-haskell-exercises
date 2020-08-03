@@ -22,7 +22,6 @@ mult (Succ (Succ (Succ Zero))) (Succ (Succ (Succ Zero)))
 
 -- 3
 data Tree a = Leaf a | Node (Tree a) (Tree a)
-
 t :: Tree Int
 t = Node (Node (Leaf 1) (Leaf 4)) (Node (Leaf 6) (Leaf 9))
 
@@ -41,8 +40,18 @@ balanced (Node x y) | diff (numberOfLeafs x) (numberOfLeafs y) <= 1 = balanced x
 -- Test: balanced (Node (Node (Leaf 1) (Leaf 4)) (Node (Leaf 6) (Leaf 9)))
 
 --4
-
 halve :: [a] -> ([a],[a])
 halve xs = (take (length xs `div` 2) xs, drop (length xs `div` 2) xs)
 
 -- balance :: [a] -> Tree
+-- balance [x] = Leaf x
+-- balance xs = Node (balance (fst (halve xs))) (balance (snd (halve xs)))
+
+--5
+data Expr = Val Int | Add Expr Expr
+
+-- folde :: (Int -> a) -> (a -> a -> a) -> Expr -> a
+-- wtf???
+
+
+
