@@ -1,3 +1,4 @@
+import System.IO
 match :: String -> String -> String 
 match xs ys = [if elem x ys then x else '-' | x <- xs]
 
@@ -16,17 +17,23 @@ getCh = do hSetEcho stdin False
            hSetEcho stdin True
            return x
 
--- sgetLine :: IO String
--- sgetLine = do x <- getCh
---                 if x == '\n' then
---                     do putChar x
---                     return []
---                 else
---                     do putChar '-'
---                     xs <- sgetLine
---                     return (x:xs)
+sgetLine :: IO String
+sgetLine = do { x <- getCh;
+                if x == '\n' then
+                    do {putChar x;
+                        return []; }
+                else
+                    do {putChar '-';
+                        xs <- sgetLine;
+                        return (x:xs) } }
 
-
+hangman :: IO()
+hangman = do { 
+            putStrLn "Thinf of a word: ";
+            word <- sgetLine;
+            putStrLn "Try to guess it: ";
+            play word
+            }
 
 -- -- Length of a string
 -- strlen ::IO ()
