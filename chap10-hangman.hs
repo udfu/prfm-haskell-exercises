@@ -2,7 +2,6 @@ import System.IO
 match :: String -> String -> String 
 match xs ys = [if elem x ys then x else '-' | x <- xs]
 
-
 play word = do { putStr "?";
                 guess <- getLine;
                 if guess == word then
@@ -36,19 +35,18 @@ hangman = do {
             }
 
 -- -- Length of a string
--- strlen ::IO ()
--- strlen = do putStr "Enter a string: "
---             xs <- getLine 
---             putStr "The string has "
---             putStr (show (length xs))
---             putStrLn " characters."
+strlen ::IO ()
+strlen = do putStr "Enter a string: "
+            xs <- getLine 
+            putStr "The string has "
+            putStr (show (length xs))
+            putStrLn " characters."
 
 
 hello = do  
     putStrLn "Hello, what's your name?"  
     name <- getLine  
     putStrLn ("Hey " ++ name ++ ", you rock!")
-
 
 revInput = do   
     line <- getLine  
