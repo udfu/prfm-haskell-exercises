@@ -1,4 +1,4 @@
--- 1
+    -- 1
 -- [ f x | x <- xs, p x] --> re-expressed with higher-order functions map and filter
 reexpressionEx1 f p xs = map f (filter p xs)
 
@@ -30,9 +30,11 @@ dec2int :: [Int] -> Int
 dec2int = foldl (\x y -> 10 * x + y ) 0
 
 -- 5
--- curry :: 
+curry :: ((a, b) -> c) -> a -> b -> c
+curry f = (\x y -> f (x,y))
 
--- uncurry ::
+uncurry :: (a -> b -> c) -> (a, b) -> c
+uncurry f = (\(x,y) -> f x y)
 
 -- 6 
 unfold p h t x | p x = []

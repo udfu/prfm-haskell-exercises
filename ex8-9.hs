@@ -6,11 +6,9 @@ add :: Nat -> Nat -> Nat
 add Zero n = n
 add (Succ m) n = Succ (add m n)
 
-mult :: Nat -> Nat -> Nat
-mult Zero _ = Zero
-mult _ Zero = Zero
-mult (Succ m) n = Succ (add (Succ m) n)
-
+mul :: Nat -> Nat -> Nat
+mul m Zero = Zero
+mul m (Succ n) = add m (mul m n)
 {-
 3 * 2
 mult (Succ (Succ (Succ Zero))) (Succ (Succ (Succ Zero)))

@@ -130,3 +130,4 @@ lastRec :: [a] -> a
 lastRec [] = error "the list should not be empty"
 lastRec [x] = x
 lastRec (x:xs) = lastRec xs
+

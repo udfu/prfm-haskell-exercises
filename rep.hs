@@ -187,4 +187,22 @@ altMap :: (a -> b) -> (a -> b) -> [a] -> [b]
 altMap f g [] = []
 altMap f g (x:xs) = (f x) : altMap g f xs 
 
--- 7.10
+-- 9.4
+readInt :: IO Int
+readInt = do { n <- getLine; 
+            return (read n)
+}
+
+adder :: IO()
+adder = do { putStr "How many numbers: " ;
+             n <- readInt;
+             numbers <- reader n [];
+             putStrLn ("Sum is " ++ show (sum numbers)) 
+}
+
+reader lines ns = do {
+                    n <- readInt; 
+                    if (lines-1) > 0 then
+                        reader (lines - 1) (n:ns)
+                    else 
+                        return (n:ns)}
